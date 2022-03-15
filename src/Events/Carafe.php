@@ -6,7 +6,6 @@ class Carafe{
     private $gallonsRestant;
     private $valeurGallons;
 
-
     /**
      * Class constructor.
      */
@@ -53,18 +52,20 @@ class Carafe{
     }
 
     public function transvaser(Carafe $carafe){
+        
         $gallonsR = $this->gallonsRestant;
         if(($carafe->getGallonsRestant() + $this->gallonsRestant) < $this->valeurGallons){
            
             $this->gallonsRestant += $carafe->getGallonsRestant();
             $carafe->vider();
+            //echo "() Carafe avec {$this->valeurGallons}G: {$this->gallonsRestant}G restant\n";
            
         }else{ 
             $this->gallonsRestant += ($this->valeurGallons - $gallonsR);
             $gallons = $carafe->getGallonsRestant() - ($this->valeurGallons - $gallonsR);
-            $carafe->setGallonsRestant($gallons);  
+            $carafe->setGallonsRestant($gallons);
+            echo "(transvaser) Carafe avec {$carafe->valeurGallons}G: {$carafe->gallonsRestant}G restant\n";  
         }
-
         echo "(transvaser) Carafe avec {$this->valeurGallons}G: {$this->gallonsRestant}G restant\n";
         echo "-------------------------------------------------------------- \n";
     }

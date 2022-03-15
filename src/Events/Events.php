@@ -28,21 +28,27 @@ class Events{
         $this->carafe1->vider();
         $this->carafe2->remplir();
         echo "------------------------------------------------------------------- \n \n";
-        do{
+        if($this->carafe2->getValeurGallons() == $this->remainGallons){
             $this->carafe1->transvaser($this->carafe2);
+            $this->carafe2->vider();
+        }elseif($this->carafe2->getValeurGallons() != $this->remainGallons){
 
-            if($this->carafe1->estPlein()){
-                $this->carafe1->vider();
-            }
-
-            if($this->carafe2->estVide()){
-                $this->carafe2->remplir();
-            }
-
-        }while($this->carafe2->getGallonsRestant() != $this->remainGallons);
+            do{
+                $this->carafe1->transvaser($this->carafe2);
+    
+                if($this->carafe1->estPlein()){
+                    $this->carafe1->vider();
+                }
+    
+                if($this->carafe2->estVide()){
+                    $this->carafe2->remplir();
+                }
+    
+            }while($this->carafe2->getGallonsRestant() != $this->remainGallons);
+        }
+       
         
         $this->carafe1->transvaser($this->carafe2);
-        $this->carafe2->vider();
 
         echo "Resultat : \n";
         echo "Carafe avec {$this->carafe1->getValeurGallons()}G: {$this->carafe1->getGallonsRestant()}G restant \n";

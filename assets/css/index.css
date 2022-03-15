@@ -1,0 +1,17 @@
+.content{
+    width: 600px;
+    margin: 250px auto;
+}
+.carafe{
+    height: 150px;
+    width:  100px;
+    border: 3px solid black;
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    display: inline-block;
+    margin: 75px;
+}
+
+.plein::content{
+    background-color: rgba(19, 240, 240, 0.5);
+}
